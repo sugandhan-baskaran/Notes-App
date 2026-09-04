@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
+:root {
+  --paper: #efe7d8;
+  --paper-deep: #e7dcc4;
+  --panel: rgba(255, 253, 247, 0.82);
+  --panel-strong: #fffdf8;
+  --line: rgba(72, 62, 52, 0.14);
+  --line-strong: rgba(72, 62, 52, 0.2);
+  --accent: #314d42;
+  --accent-strong: #243d35;
+  --accent-soft: #dfe9e2;
+  --ink: #241f1a;
+  --ink-soft: #5d534d;
+  --danger: #b44a3d;
+  --danger-strong: #8c352d;
+  --shadow: rgba(36, 31, 26, 0.08);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(85, 98, 75, 0.12), transparent 28%),
+    linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+  color: var(--ink);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2.5rem 1.35rem 4rem;
+}
+
+/* ---------- Header ---------- */
+
+.masthead {
+  position: relative;
+  padding: 1.3rem 1.25rem 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 8px);
+  background: rgba(255, 253, 248, 0.52);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 18px 35px rgba(41, 32, 24, 0.04);
+}
+
+.masthead::before {
+  content: '';
+  position: absolute;
+  inset: 12px auto 12px 12px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent) 0%, #9aab84 100%);
+}
+
+.masthead__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-left: 1rem;
+}
+
+.masthead__title {
+  font-size: clamp(2.3rem, 4vw, 3.35rem);
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--ink);
+}
+
+.masthead__count {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(49, 77, 66, 0.15);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  white-space: nowrap;
+}
+
+.masthead__subtitle {
+  margin: 0.9rem 0 0;
+  padding-left: 1rem;
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Note form ---------- */
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 24px var(--shadow);
+  padding: 1.2rem 1.15rem 1.1rem;
+  margin-bottom: 1.4rem;
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.note-form__title,
+.note-form__content,
+.search-tab__input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.24);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background-color 140ms ease;
+}
+
+.note-form__title {
+  border-bottom-color: var(--line-strong);
+  border-radius: 10px 10px 0 0;
+  padding: 0.7rem 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: rgba(255, 255, 255, 0.22);
+  color: var(--ink);
+}
+
+.note-form__title:focus,
+.note-form__content:focus,
+.search-tab__input:focus {
+  outline: none;
+  border-color: rgba(49, 77, 66, 0.38);
+  box-shadow: 0 0 0 4px rgba(49, 77, 66, 0.1);
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.note-form__content {
+  resize: vertical;
+  min-height: 5.5rem;
+  padding: 0.8rem 0.85rem;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--ink);
+  border-color: rgba(72, 62, 52, 0.08);
+}
+
+.note-form__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 0.72rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease, background-color 140ms ease, border-color 140ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn--primary {
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-strong) 100%);
+  color: #fff;
+  box-shadow: 0 10px 18px rgba(36, 61, 53, 0.18);
+}
+
+.btn--primary:hover {
+  background: linear-gradient(180deg, var(--accent-strong) 0%, #1f352f 100%);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: rgba(72, 62, 52, 0.18);
+  color: var(--ink-soft);
+}
+
+.btn--ghost:hover {
+  border-color: rgba(72, 62, 52, 0.32);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn--small {
+  padding: 0.42rem 0.8rem;
+  font-size: 0.72rem;
+}
+
+.btn--danger {
+  background: rgba(180, 74, 61, 0.05);
+  border-color: rgba(180, 74, 61, 0.28);
+  color: var(--danger);
+}
+
+.btn--danger:hover {
+  background: linear-gradient(180deg, var(--danger) 0%, var(--danger-strong) 100%);
+  color: #fff;
+}
+
+/* ---------- Search ---------- */
+
+.search-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 253, 248, 0.7);
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 18px rgba(33, 25, 20, 0.02);
+}
+
+.search-tab__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.search-tab__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  color: var(--ink);
+  padding: 0.35rem 0.2rem;
+}
+
+.search-tab__clear {
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.15rem;
+  transition: color 120ms ease, transform 120ms ease;
+}
+
+.search-tab__clear:hover {
+  color: var(--danger);
+  transform: scale(1.08);
+}
+
+/* ---------- Note grid & cards ---------- */
+
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(255, 253, 248, 0.9));
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding-left: 1.5rem;
+  box-shadow: 0 12px 20px rgba(41, 32, 24, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 170px;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(49, 77, 66, 0.2);
+  box-shadow: 0 18px 28px rgba(41, 32, 24, 0.07);
+}
+
+.card__rule {
+  position: absolute;
+  left: 1rem;
+  top: 0.85rem;
+  bottom: 0.85rem;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(49, 77, 66, 0.9), rgba(180, 74, 61, 0.7));
+}
+
+.card__body {
+  padding: 1rem 0.9rem 0.55rem 0.1rem;
+}
+
+.card__title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+  word-break: break-word;
+  color: var(--ink);
+}
+
+.card__content {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0 0 0.8rem;
+}
+
+.card__meta {
+  font-size: 0.67rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+.card__actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 0.85rem 0.8rem 0.15rem;
+}
+
+/* ---------- Empty state ---------- */
+
+.empty-state {
+  text-align: center;
+  padding: 3.25rem 1.2rem;
+  color: var(--ink-soft);
+  border: 1px dashed rgba(72, 62, 52, 0.24);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.empty-state__title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.7rem;
+  color: var(--ink);
+  margin: 0 0 0.42rem;
+}
+
+.empty-state__hint {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 480px) {
+  .page {
+    padding: 1.35rem 0.9rem 3rem;
+  }
+
+  .masthead {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .masthead__title-row {
+    padding-left: 0.8rem;
+  }
+
+  .masthead__subtitle {
+    padding-left: 0.8rem;
+  }
+
+  .masthead__title {
+    font-size: 2.2rem;
+  }
+
+  .search-tab {
+    padding: 0.65rem 0.75rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
